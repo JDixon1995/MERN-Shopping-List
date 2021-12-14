@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 // @route POST api/items
-// @desc Create a Post
+// @desc Create an item
 router.post('/', (req, res) => {
     const newItem = new Item({
         name: req.body.name
@@ -21,4 +21,14 @@ router.post('/', (req, res) => {
     newItem.save()
     res.send(newItem)
 })
+
+// @route DELETE api/items
+// @desc Delete an item
+router.delete('/:id', (req, res) => {
+    Item.findById(req.params.id)
+        .then(item => item.remove().then(() => res.json({success: true})))
+        .catch(err => res.status(404).json({success: false}))
+})
+
+
 module.exports = router
