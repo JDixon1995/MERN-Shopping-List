@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 // Item Model
-const Item = require('../../models/Item')
+const item = require('../../models/item')
 
 // @route GET api/items
 // @desc Get All Items
@@ -12,5 +12,13 @@ router.get('/', (req, res) => {
         .then((items) => res.json(items))
 })
 
-
+// @route POST api/items
+// @desc Create a Post
+router.post('/', (req, res) => {
+    const newItem = new Item({
+        name: req.body.name
+    })
+    newItem.save()
+    res.send(newItem)
+})
 module.exports = router
