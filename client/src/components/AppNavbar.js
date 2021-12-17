@@ -1,4 +1,4 @@
-import { render } from 'express/lib/response';
+import React from 'react';
 import {
     Collapse,
     Navbar,
@@ -9,31 +9,29 @@ import {
     NavLink,
     Container
 } from 'reactstrap';
-import useState from 'react'
+import { useState } from 'react'
 
 const AppNavbar = () => {
 
-    const [isOpen, toggle] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
-    render = () => {
+    return (
         <div>
-            <Navbar color="dark" dark expand="sm" className="mb-5">
-                <Container>
-                    <NavbarBrand href="/">Shoppping List</NavbarBrand>
-                    <NavbarToggler onClick={toggle()} />
-                    <Collapse isOpen={isOpen=!isOpen} navbar>
+          <Navbar color="dark" dark expand="sm" className="mb-5">
+            <Container>
+              <NavbarBrand href="/">ShoppingList</NavbarBrand>
+                <NavbarToggler onClick={setIsOpen} />
+                    <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://github.com/JDixon1995">
-                                    GitHub
-                                </NavLink>
+                                <NavLink href="https://github.com/JDixon1995">GitHub</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
-                </Container>
-            </Navbar>
+            </Container>
+          </Navbar>
         </div>
-    }
+    )
 }
 
 export default AppNavbar;
