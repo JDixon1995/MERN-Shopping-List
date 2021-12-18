@@ -21,10 +21,20 @@ const ShoppingList = () => {
             onClick={() => {
                 const name = prompt('Enter Item')
                 if(name) {
-                    setItems([...items, {id: Math.Random, name}])
+                    setItems([...items, {id: Math.random() * 10 , name}])
                 }
             }}
             >Add Item</Button>
+
+            <ListGroup>
+                <TransitionGroup className="shopping-list">
+                    {items.map(({ id, name }) => (
+                        <CSSTransition key={id} timeout={500} classNames="fade">
+                            <ListGroupItem>{name}</ListGroupItem>
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
+            </ListGroup>
         </Container>
     )
 }
