@@ -1,13 +1,15 @@
 import React from 'react'
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup  } from 'react-transition-group'
+import { useSelector } from 'react-redux'
 import { connect } from 'react-redux'
 import { getItems } from '../actions/itemActions'
 import PropTypes from 'prop-types'
 
 const ShoppingList = () => {
 
-    const { items } = this.props.item
+    const { items } = useSelector((state) => state.item)
+
     return(
         <Container>
             <Button
